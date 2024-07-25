@@ -1,0 +1,22 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Report cache used by istanbul
+.nyc_output
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Caliper modules
+caliper/node_modules
+caliper/package-lock.json
+
+#Chaincode modules
+
+chaincode-javascript/node_modules
+chaincode-javascript/package-lock.json

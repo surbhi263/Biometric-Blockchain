@@ -1,0 +1,39 @@
+test:
+  name: basic-contract-benchmark
+  description: A test benchmark
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: createTemplate
+      description: Create template benchmark
+      txNumber: 1000
+      rateControl:
+        { type: "fixed-rate", opts: { tps:   50 } }
+        # { type: "linear-rate", opts: { startingTps: 50, finishingTps: 200 } }
+      workload:
+        module: workload/createTemplate.js
+        arguments:
+          contractId: biometric
+    - label: readTemplate
+      description: Read template benchmark
+      txDuration: 60
+      rateControl: { type: "fixed-load", opts: { transactionLoad: 5 } }
+      workload:
+        module: workload/readTemplate.js
+        arguments:
+          # assets: 10
+          contractId: biometric
+
+monitors:
+  resource:
+    - module: docker
+      options:
+        interval: 4
+        containers:
+          [
+            "peer0.org1.example.com",
+            "peer0.org2.example.com",
+            "orderer.example.com",
+          ]
+
