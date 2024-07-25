@@ -1,0 +1,26 @@
+name: Caliper test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+  sutOptions:
+    mutualTls: true
+
+channels:
+  - channelName: mychannel
+    contracts:
+      - id: biometric
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+        - name: "User1"
+          clientPrivateKey:
+            path: "/home/sidhugr/biometric-setup/caliper/../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/9d50f1094c6935cb4f47dcc14b544d6472c1147488ebeec75562a3cf57f6a1eb_sk"
+          clientSignedCert:
+            path: "/home/sidhugr/biometric-setup/caliper/../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/cert.pem"
+    connectionProfile:
+      path: "/home/sidhugr/biometric-setup/caliper/../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml"
+      discover: true
+
